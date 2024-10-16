@@ -1,6 +1,6 @@
 package Domain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class Servico {
@@ -13,6 +13,19 @@ public class Servico {
     private double avalicao;
     private Usuario usuario;
 
-    
+    public Servico(Usuario u){
+        this.usuario = u;
+    }
 
+    public void pesquisarServico(){
+
+    }
+
+    public void filtroGeografico(){
+
+    }
+
+    public void filtroTag(){
+
+    }
 }

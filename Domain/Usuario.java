@@ -12,6 +12,7 @@ public class Usuario {
         this.email = email;
         this.nome = nome;
         this.senha = senha;
+        //savar no banco
     }
     public void login(String email, String senha){
 
