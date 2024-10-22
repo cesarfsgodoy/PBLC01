@@ -1,9 +1,23 @@
 package Domain;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Tag {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nome;
 
-    public void associarTag(Servico s){
-        //inserir na lista de tag do servico
+    @ManyToMany(mappedBy = "tags")
+    private List<Servico> servicos;
+
+    // Getters and Setters
+    
+    public void associarTag() {
+        // lógica de associação de tag
     }
 }
+
