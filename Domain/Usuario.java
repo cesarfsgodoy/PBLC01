@@ -1,26 +1,41 @@
 package Domain;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nome;
     private String email;
     private String senha;
-    private int id;
-    private double avalicao;
-    private Servico servico = null;
+    private double avaliacao;
+    
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Mensagem> mensagens;
 
-    public void cadastrar(String email, String nome, String senha){
-        this.email = email;
-        this.nome = nome;
-        this.senha = senha;
-        //savar no banco
+    @ManyToMany
+    @JoinTable(
+        name = "usuario_servico",
+        joinColumns = @JoinColumn(name = "usuario_id"),
+        inverseJoinColumns = @JoinColumn(name = "servico_id")
+    )
+    private List<Servico> servicos;
+
+    // Getters and Setters
+
+    public void cadastrar() {
+        // lógica de cadastro
     }
-    public void login(String email, String senha){
-
+    
+    public void login() {
+        // lógica de login
     }
-    public void pesquisar(String nome){
-
-    }
-    public void avaliar(Usuario u, double nota){
-
+    
+    public void avaliar() {
+        // lógica de avaliação
     }
 }
