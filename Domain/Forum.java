@@ -1,10 +1,24 @@
 package Domain;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Forum {
-    private int idServico;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @OneToMany(mappedBy = "forum", cascade = CascadeType.ALL)
     private List<Mensagem> mensagens;
-    public void enviarMensagem(){}
 
+    @OneToOne
+    @JoinColumn(name = "servico_id")
+    private Servico servico;
+
+    // Getters and Setters
+
+    public void enviarMensagem() {
+        // lógica de envio de mensagem no fórum
+    }
 }
