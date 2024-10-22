@@ -1,15 +1,28 @@
 package Domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Mensagem {
-    private int idMensagem;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idMensagem;
+    
     private String conteudo;
     private Date data;
-    private int idUsuario;
-    private Mensagem resposta;
+    
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-    public void enviarMensagem(){
+    @ManyToOne
+    @JoinColumn(name = "forum_id")
+    private Forum forum;
 
+    // Getters and Setters
+    
+    public void enviarMensagem() {
+        // lógica de envio de mensagem
     }
 }
